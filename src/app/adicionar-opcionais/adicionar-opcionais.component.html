@@ -1,0 +1,58 @@
+<div class="container" style="width: 83vw; height: 100vh;">
+    <h1 class="text-center pt-5">Adicionar opcionais do carro</h1>
+    <h4 class="text-center">Preencha os dados do carro</h4>
+
+    <div class="d-flex justify-content-center">
+        <div class="col-6">
+            <div class="m-5 border-bottom p-5">
+                <div class="form-check m-3">
+                    <input class="form-check-input" type="checkbox" value="" id="electricWindow" [(ngModel)]="electricWindow">
+                    <label class="form-check-label" for="electricWindow">
+                        Vidros elétricos
+                    </label>
+                </div>
+                <div class="form-check m-3">
+                    <input class="form-check-input" type="checkbox" value="" id="eletricLocks" [(ngModel)]="eletricLocks">
+                    <label class="form-check-label" for="eletricLocks">
+                        Travas elétricas
+                    </label>
+                </div>
+                <div class="form-check m-3">
+                    <input class="form-check-input" type="checkbox" value="" id="airConditioning" [(ngModel)]="airConditioning">
+                    <label class="form-check-label" for="airConditioning">
+                        Ar-condicionado
+                    </label>
+                </div>
+                <div class="form-check m-3">
+                    <input class="form-check-input" type="checkbox" value="" id="hidraulicSteering" [(ngModel)]="hidraulicSteering">
+                    <label class="form-check-label" for="hidraulicSteering">
+                        Direção hidráulica
+                    </label>
+                </div>
+                <div class="form-check m-3">
+                    <input class="form-check-input" type="checkbox" value="" id="airbags" [(ngModel)]="airbags">
+                    <label class="form-check-label" for="airbags">
+                        Airbags
+                    </label>
+                </div>
+                <div class="form-check m-3">
+                    <input class="form-check-input" type="checkbox" value="" id="multmedia" [(ngModel)]="multmedia">
+                    <label class="form-check-label" for="multmedia">
+                        Multimidia
+                    </label>
+                </div>
+                <div class="form-check m-3">
+                    <input class="form-check-input" type="checkbox" value="" id="alarm" [(ngModel)]="alarm">
+                    <label class="form-check-label" for="alarm">
+                        Alarme
+                    </label>
+                </div>
+                <button class="btn btn-primary justify-self-center" (click)="adicionar()">Adicionar</button>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex justify-content-end w-75">
+        <button class="btn btn-primary" (click)="terminar()">Terminar</button>
+    </div>
+
+</div>

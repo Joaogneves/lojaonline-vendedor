@@ -1,0 +1,25 @@
+<div class="container" style="width: 83vw; height: 100vh; overflow-y: scroll;">
+    <div class="card mt-5" *ngFor="let c of cars$ | async">
+        <div class="card-header">
+            <h4>{{c.carBrand}}</h4>
+        </div>
+        <div class="col-12 d-flex">
+            <div class="card-body col-2">
+                <img *ngIf="c.picture" [src]="c.picture" alt="" width="220px" class="rounded">
+            </div>
+            <div class="card-body col-9">
+                <h5 class="card-title">{{c.name}} {{c.carYear}}</h5>
+                <p class="card-text">Cor: {{c.carColor}}</p>
+                <p class="card-text">{{c.price | currency: 'BRL'}}</p>
+                <p class="card-text border-top">O que deseja fazer ?</p>
+                <a href="/edit/{{c.id}}" class="btn btn-primary me-5"><i class="fa-solid fa-pen-to-square"></i>
+                    Editar</a>
+                <a (click)="soldCar(c.id!)" class="btn btn-success me-5"><i class="fa-solid fa-money-bill"></i>
+                    Vender</a>
+                <a href="/imgadd/{{c.id}}" class="btn btn-primary me-5"><i class="fa-solid fa-image"></i>
+                    Adicionar imagem</a>
+                <a (click)="deleteCar(c.id!)" class="btn btn-danger me-5"><i class="fa-solid fa-trash"></i> Excluir</a>
+            </div>
+        </div>
+    </div>
+</div>
