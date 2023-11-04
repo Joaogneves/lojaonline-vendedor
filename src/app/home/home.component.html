@@ -1,4 +1,4 @@
-<div class="container" style="width: 83vw; height: 100vh;">
+<div *ngIf="login == true" class="container" style="width: 83vw; height: 100vh;">
     <h1 class="text-center pt-5">Bem vindo</h1>
     <h4 class="text-center">Você pode adiconar um novo carro ou gerenciar os carros já cadastrados para venda</h4>
     <div class="d-flex justify-content-center align-items-center w-100 h-75">
@@ -20,5 +20,11 @@
                 </div>
             </div>
         </a>
+    </div>
+</div>
+<div *ngIf="login == false" class="container d-flex justify-content-center align-items-center" style="width: 83vw; height: 100vh;">
+    <div>
+        <h1 class="text-center pt-5">Bem vindo</h1>
+    <h4 class="text-center">Faça login para continuar</h4>
     </div>
 </div>

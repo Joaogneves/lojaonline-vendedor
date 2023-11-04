@@ -49,7 +49,7 @@ export class AdicionarOpcionaisComponent implements OnInit {
 
   this.service.adicionarOpts(this.id, op).subscribe(
     res => {
-      alert(res)
+      alert("Alualizado")
     }
   )
 }

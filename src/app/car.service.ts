@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment.development';
 
 import { Car, CarOptionals, CarPicture } from './model/Car';
@@ -10,56 +10,118 @@ import { Car, CarOptionals, CarPicture } from './model/Car';
 export class CarService {
 
   private urlApi = environment.api;
-
-  constructor(private http: HttpClient) { }
-
-  registerCar(car: Car) {
-    return this.http.post<Car>(this.urlApi + '/cars', car)
+  
+  constructor(private http: HttpClient) {
   }
 
+  
+  
+  registerCar(car: Car) {
+    const token = localStorage.getItem("token")
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.post<Car>(this.urlApi + '/cars', car, {headers})
+  }
+  
   getCars() {
-    return this.http.get<Car[]>(this.urlApi + '/cars');
+    const token = localStorage.getItem("token")
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.get<Car[]>(this.urlApi + '/cars', {headers});
   }
 
   getCar(id: string) {
-    return this.http.get<Car>(this.urlApi + '/cars/' + id);
+    const token = localStorage.getItem("token")
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.get<Car>(this.urlApi + '/cars/' + id, {headers});
   }
 
   soldCar(id: string) {
-    
-    return this.http.put<Car>(this.urlApi + '/cars/' + id, null);
+    const token = localStorage.getItem("token")
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.put<Car>(this.urlApi + '/cars/' + id, null, {headers});
   }
 
   editCar(id: string, car:Car) {
-    return this.http.put<Car>(this.urlApi + '/cars/update/' + id, car);
+    const token = localStorage.getItem("token")
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.put<Car>(this.urlApi + '/cars/update/' + id, car, {headers});
   }
 
   deleteCar(id: string) {
-    return this.http.delete<Car>(this.urlApi + '/cars/' + id);
+    const token = localStorage.getItem("token")
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.delete<Car>(this.urlApi + '/cars/' + id, {headers});
   }
 
   saveImage(id:string, cp: CarPicture) {
-    return this.http.post<CarPicture>(this.urlApi + '/cars/images?id=' + id , cp);
+    const token = localStorage.getItem("token")
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.post<CarPicture>(this.urlApi + '/cars/images?id=' + id , cp, {headers});
   }
 
   adicionarOpts(id:string, op:CarOptionals) {
-    return this.http.post<CarOptionals>(this.urlApi + '/cars/optionals?id=' + id, op)
+    const token = localStorage.getItem("token")
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.post<CarOptionals>(this.urlApi + '/cars/optionals?id=' + id, op, {headers})
   }
 
   getOpts(id:string) {
-    return this.http.get<CarOptionals>(this.urlApi + '/cars/optionals/' + id)
+    const token = localStorage.getItem("token")
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.get<CarOptionals>(this.urlApi + '/cars/optionals/' + id, {headers})
   }
 
   deleteOpts(id:string) {
-    return this.http.delete<CarOptionals>(this.urlApi + 'cars/optionals/delete/' + id)
+    const token = localStorage.getItem("token")
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.delete<CarOptionals>(this.urlApi + 'cars/optionals/delete/' + id, {headers})
   }
 
   updateOpts(optId:string, op: CarOptionals) {
+    const token = localStorage.getItem("token")
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
     console.log(optId);
-    return this.http.put<CarOptionals>(this.urlApi + '/cars/optionals/update/' + optId, op)
+    return this.http.put<CarOptionals>(this.urlApi + '/cars/optionals/update/' + optId, op, {headers})
   }
 
   getAllSolds() {
-    return this.http.get<Car[]>(this.urlApi + '/cars/solds');
+    const token = localStorage.getItem("token")
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.get<Car[]>(this.urlApi + '/cars/solds', {headers});
   }
 }

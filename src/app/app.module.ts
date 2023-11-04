@@ -7,14 +7,15 @@ import { AppComponent } from './app.component';
 import ptBr from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
 import { NgxMaskModule } from 'ngx-mask';
+import { PageHeaderComponent } from './page-header/page-header.component';
 
-import { HeaderComponent } from './header/header.component';
+import { intercept } from './http-interceptors/intercept';
 
 registerLocaleData(ptBr);
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    PageHeaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,6 +28,7 @@ registerLocaleData(ptBr);
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt' },
+    intercept
   ],
   bootstrap: [AppComponent]
 })

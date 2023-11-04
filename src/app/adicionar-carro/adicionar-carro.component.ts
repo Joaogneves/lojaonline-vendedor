@@ -1,3 +1,4 @@
+import { HttpHeaders } from '@angular/common/http';
 import { Car } from './../model/Car';
 import { Component, OnInit } from '@angular/core';
 
@@ -50,6 +51,8 @@ export class AdicionarCarroComponent implements OnInit{
 
 
   saveCar() {
+    this.price = this.price.replace(/[.,]/g, '');
+    this.km = this.km.replace(/[.]/g, '');
 
     const car: Car = {
       carBrand: this.carBrand,
