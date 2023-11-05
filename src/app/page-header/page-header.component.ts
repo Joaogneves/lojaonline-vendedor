@@ -21,10 +21,9 @@ export class PageHeaderComponent implements OnInit {
   constructor(private service: UserService){}
   ngOnInit(): void {
     this.getUser();
-    this.role = localStorage.getItem('user_role')!;
     console.log(this.role)
   }
-
+  
   login() {
     this.user.cpf = this.user.cpf.replace(/[.-]/g, '');
     this.service.login(this.user).subscribe(
@@ -32,14 +31,15 @@ export class PageHeaderComponent implements OnInit {
         console.log(res)
         window.location.href = '/';
       }
-    );
-  }
-  getUser() {
-    this.cpf = localStorage.getItem("cpf")!;
-    this.service.findUser(this.cpf).subscribe(
-      res => {
-        this.userName = res.firstName + ' ' + res.lastName;
-        localStorage.setItem('user_role', res.role!);
+      );
+    }
+    getUser() {
+      this.cpf = localStorage.getItem("cpf")!;
+      this.service.findUser(this.cpf).subscribe(
+        res => {
+          this.userName = res.firstName + ' ' + res.lastName;
+          localStorage.setItem('user_role', res.role!);
+          this.role = localStorage.getItem('user_role')!;
       }
     );
   }
