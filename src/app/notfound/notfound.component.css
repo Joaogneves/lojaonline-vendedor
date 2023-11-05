@@ -1,0 +1,11 @@
+#bg {
+    position: relative;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(../../assets/images/conceito-de-erro-404-para-a-pagina-de-destino_52683-22147.jpg);
+    background-size: cover;
+}
+
+#msg {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 50px;
+}

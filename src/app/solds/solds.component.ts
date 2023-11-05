@@ -15,7 +15,7 @@ export class SoldsComponent implements OnInit {
   total: number = 0;
 
   ngOnInit(): void {
-    this.getSolds();
+    this.getSoldsBySeller();
     this.cars$.subscribe(
       car => {
         car.forEach(
@@ -29,8 +29,12 @@ export class SoldsComponent implements OnInit {
     
   }
 
+  getSoldsBySeller() {
+    this.cars$  = this.service.getSoldsbySeller(localStorage.getItem("userId")!)
+  }
+
   getSolds() {
-    this.cars$ = this.service.getAllSolds();
+    //this.cars$ = this.service.getAllSolds();
   }
 
 }

@@ -10,7 +10,8 @@ const routes: Routes = [
   { path: 'edit/:id', loadChildren: () => import('./edit/edit.module').then(m => m.EditModule), canActivate:[AuthGuard] },
   { path: 'solds', loadChildren: () => import('./solds/solds.module').then(m => m.SoldsModule), canActivate:[AuthGuard] },
   { path: '', loadChildren: () => import('./home/home.module').then(m => m.HomeModule)},
-  { path: '**', loadChildren: () => import('./home/home.module').then(m => m.HomeModule), canActivate:[AuthGuard] },
+  { path: 'notfound', loadChildren: () => import('./notfound/notfound.module').then(m => m.NotfoundModule) },
+  { path: '**', loadChildren: () => import('./notfound/notfound.module').then(m => m.NotfoundModule) },
 ];
 
 @NgModule({

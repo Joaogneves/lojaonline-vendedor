@@ -43,13 +43,13 @@ export class CarService {
     return this.http.get<Car>(this.urlApi + '/cars/' + id, {headers});
   }
 
-  soldCar(id: string) {
+  soldCar(id: string, userId: string) {
     const token = localStorage.getItem("token")
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
     });
-    return this.http.put<Car>(this.urlApi + '/cars/' + id, null, {headers});
+    return this.http.put<Car>(this.urlApi + '/cars/sell?carId=' + id + '&userId=' + userId , null, {headers});
   }
 
   editCar(id: string, car:Car) {
@@ -123,5 +123,14 @@ export class CarService {
       'Authorization': `Bearer ${token}`
     });
     return this.http.get<Car[]>(this.urlApi + '/cars/solds', {headers});
+  }
+
+  getSoldsbySeller(id: string) {
+    const token = localStorage.getItem("token")
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.get<Car[]>(this.urlApi + '/cars/solds/' + id, {headers});
   }
 }

@@ -12,6 +12,7 @@ export class PageHeaderComponent implements OnInit {
   
   userName: string = ''
   cpf: string = '';
+  role: string = ''
   user: UserLogin = {
     cpf: '',
     password: ''
@@ -20,7 +21,8 @@ export class PageHeaderComponent implements OnInit {
   constructor(private service: UserService){}
   ngOnInit(): void {
     this.getUser();
-    console.log(this.userName)
+    this.role = localStorage.getItem('user_role')!;
+    console.log(this.role)
   }
 
   login() {
@@ -36,7 +38,8 @@ export class PageHeaderComponent implements OnInit {
     this.cpf = localStorage.getItem("cpf")!;
     this.service.findUser(this.cpf).subscribe(
       res => {
-        this.userName = res.firstName + ' ' + res.lastName
+        this.userName = res.firstName + ' ' + res.lastName;
+        localStorage.setItem('user_role', res.role!);
       }
     );
   }

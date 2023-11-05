@@ -1,3 +1,4 @@
+import { UserService } from './../user.service';
 import { Component, OnInit } from '@angular/core';
 import { CarService } from '../car.service';
 import { Car } from '../model/Car';
@@ -12,8 +13,9 @@ declare var $: any;
 })
 export class GerenciarComponent implements OnInit {
 
+  userId: string = ''
   cars$ = new Observable<Car[]>();
-  constructor(private service: CarService) {
+  constructor(private service: CarService, private userService: UserService ) {
     
   }
 
@@ -22,6 +24,9 @@ export class GerenciarComponent implements OnInit {
     this.cars$.subscribe(cars => {
       console.log('Cars:', cars);
     }); 
+    this.getUser();
+    this.userId = localStorage.getItem("userId")!;
+    console.log(this.userId)
   }
 
   getAll() {
@@ -29,7 +34,7 @@ export class GerenciarComponent implements OnInit {
   }
 
   soldCar(id: string) {
-    this.service.soldCar(id).subscribe(_ => {
+    this.service.soldCar(id, this.userId).subscribe(_ => {
       window.location.href = '/solds';
     })
   }
@@ -38,5 +43,16 @@ export class GerenciarComponent implements OnInit {
     this.service.deleteCar(id).subscribe(_ => {
       this.getAll();
     })
+  }
+
+  getUser() {
+    const cpf = localStorage.getItem("cpf")!;
+    this.userService.findUser(cpf).subscribe(
+      res => {
+        this.userId = res.id!;
+        console.log("User",this.userId)
+        localStorage.setItem("userId", this.userId);
+      }
+    );
   }
 }

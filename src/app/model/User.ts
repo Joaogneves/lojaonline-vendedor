@@ -13,6 +13,8 @@ export interface UserLogin {
 }
 
 export interface UserName {
+    id?: string,
     firstName?: string,
     lastName?: string,
+    role?: string
 }

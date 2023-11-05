@@ -6,22 +6,40 @@
     </a>
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
-        <li class="nav-item">
+        <li *ngIf="cpf" class="nav-item">
             <a href="/carroadd" class="nav-link link-body-emphasis" aria-current="page">
                 <i class="fa-solid fa-plus me-4" style="font-size: 1rem;"></i>
                 <span>Adicionar carro</span>
             </a>
         </li>
-        <li>
+        <li *ngIf="cpf">
             <a href="/gerenciar" class="nav-link link-body-emphasis">
                 <i class="fa-solid fa-car-side me-4" style="font-size: 1rem;"></i>
                 <span>Gerenciar</span>
             </a>
         </li>
-        <li>
+        <li *ngIf="cpf">
             <a href="/solds" class="nav-link link-body-emphasis">
                 <i class="fa-solid fa-money-bill me-4" style="font-size: 1rem;"></i>
                 <span>Vendidos</span>
+            </a>
+        </li>
+        <li *ngIf="role == 'ADMIN'">
+            <a href="/allsolds" class="nav-link link-body-emphasis">
+                <i class="fa-solid fa-money-bill-trend-up me-4"></i>
+                <span>Todos vendidos</span>
+            </a>
+        </li>
+        <li *ngIf="role == 'ADMIN'">
+            <a href="/newuser" class="nav-link link-body-emphasis">
+                <i class="fa-solid fa-user-plus me-4" style="font-size: 1rem;"></i>
+                <span>Cadastrar vendedor</span>
+            </a>
+        </li>
+        <li *ngIf="role == 'ADMIN'">
+            <a href="/allusers" class="nav-link link-body-emphasis">
+                <i class="fa-solid fa-user-plus me-4" style="font-size: 1rem;"></i>
+                <span>Cadastrar vendedor</span>
             </a>
         </li>
     </ul>
