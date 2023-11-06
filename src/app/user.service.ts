@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
-import { UserLogin, UserName } from './model/User';
+import { User, UserLogin, UserName, UserSalles } from './model/User';
 import { catchError, map, throwError } from 'rxjs';
 
 @Injectable({
@@ -30,8 +30,21 @@ export class UserService {
     );
   }
 
+  findAllUsers(){
+    return this.http.get<UserSalles[]>(`${this.urlApi}/users`);
+  }
+
   findUser(cpf:string) {
     return this.http.get<UserName>(`${this.urlApi}/users/${cpf}`);
+  }
+
+  registerUser(user: User) {
+    const token = localStorage.getItem("token")
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.post<User>(`${this.urlApi}/auth/register`, user, {headers});
   }
 
   getAuthorizationToken() {

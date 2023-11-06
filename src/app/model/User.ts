@@ -1,10 +1,17 @@
 export interface User {
-    id?: number,
+    id?: string,
     firstName?: string,
-    lastname?: string,
+    lastName?: string,
     cpf: string,
-    password: string
+    password?: string
     role: string
+}
+
+export interface UserSalles {
+    id?: string,
+    firstName?: string,
+    lastName?: string,
+    cpf: string,
 }
 
 export interface UserLogin {

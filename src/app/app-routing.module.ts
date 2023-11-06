@@ -11,6 +11,8 @@ const routes: Routes = [
   { path: 'solds', loadChildren: () => import('./solds/solds.module').then(m => m.SoldsModule), canActivate:[AuthGuard] },
   { path: '', loadChildren: () => import('./home/home.module').then(m => m.HomeModule)},
   { path: 'notfound', loadChildren: () => import('./notfound/notfound.module').then(m => m.NotfoundModule) },
+  { path: 'allsolds', loadChildren: () => import('./allsolds/allsolds.module').then(m => m.AllsoldsModule) },
+  { path: 'cadastrar', loadChildren: () => import('./cadastrar/cadastrar.module').then(m => m.CadastrarModule) },
   { path: '**', loadChildren: () => import('./notfound/notfound.module').then(m => m.NotfoundModule) },
 ];
 
