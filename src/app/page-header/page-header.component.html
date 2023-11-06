@@ -1,5 +1,5 @@
 <div class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" style="width: 280px; height: 100vh;">
-    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+    <a routerLink="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
         <img src="../../assets/images/carro-svg-bundle-carro-svg-carro-de-corrida-svg-carro-esportivo-svg_650032-445-removebg-preview.png"
             width="50px" alt="">
         <span class="fs-4">Concessionária</span>
@@ -7,37 +7,37 @@
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
         <li *ngIf="cpf" class="nav-item">
-            <a href="/carroadd" class="nav-link link-body-emphasis" aria-current="page">
+            <a routerLink="/carroadd" class="nav-link link-body-emphasis" aria-current="page">
                 <i class="fa-solid fa-plus me-4" style="font-size: 1rem;"></i>
                 <span>Adicionar carro</span>
             </a>
         </li>
         <li *ngIf="cpf">
-            <a href="/gerenciar" class="nav-link link-body-emphasis">
+            <a routerLink="/gerenciar" class="nav-link link-body-emphasis">
                 <i class="fa-solid fa-car-side me-4" style="font-size: 1rem;"></i>
                 <span>Gerenciar</span>
             </a>
         </li>
         <li *ngIf="cpf">
-            <a href="/solds" class="nav-link link-body-emphasis">
+            <a routerLink="/solds" class="nav-link link-body-emphasis">
                 <i class="fa-solid fa-money-bill me-4" style="font-size: 1rem;"></i>
                 <span>Vendidos</span>
             </a>
         </li>
         <li *ngIf="role == 'ADMIN'">
-            <a href="/allsolds" class="nav-link link-body-emphasis">
+            <a routerLink="/allsolds" class="nav-link link-body-emphasis">
                 <i class="fa-solid fa-money-bill-trend-up me-4"></i>
                 <span>Todos vendidos</span>
             </a>
         </li>
         <li *ngIf="role == 'ADMIN'">
-            <a href="/cadastrar" class="nav-link link-body-emphasis">
+            <a routerLink="/cadastrar" class="nav-link link-body-emphasis">
                 <i class="fa-solid fa-user-plus me-4" style="font-size: 1rem;"></i>
                 <span>Cadastrar vendedor</span>
             </a>
         </li>
         <li *ngIf="role == 'ADMIN'">
-            <a href="/allusers" class="nav-link link-body-emphasis">
+            <a routerLink="/allusers" class="nav-link link-body-emphasis">
                 <i class="fa-solid fa-user me-4" style="font-size: 1rem;"></i>
                 <span>Gerenciar vendedores</span>
             </a>

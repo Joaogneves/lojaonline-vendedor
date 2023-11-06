@@ -13,7 +13,7 @@ import { Car } from '../model/Car';
 export class AllsoldsComponent implements OnInit {
   
   user$ = new Observable<UserSalles[]>();
-  userSelected: string = '';
+  userSelected: string = 'Selecione um vendedor';
   total: number = 0;
 
   cars$ = new Observable<Car[]>();

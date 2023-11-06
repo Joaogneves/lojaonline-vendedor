@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes} from '@angular/router';
 import { AuthGuard } from './_guard/auth.guard'
+import { AuthGuardAdmin } from './_guard/authAdmin.guard';
 
 const routes: Routes = [
   { path: 'carroadd', loadChildren: () => import('./adicionar-carro/adicionar-carro.module').then(m => m.AdicionarCarroModule), canActivate:[AuthGuard]},
@@ -11,9 +12,10 @@ const routes: Routes = [
   { path: 'solds', loadChildren: () => import('./solds/solds.module').then(m => m.SoldsModule), canActivate:[AuthGuard] },
   { path: '', loadChildren: () => import('./home/home.module').then(m => m.HomeModule)},
   { path: 'notfound', loadChildren: () => import('./notfound/notfound.module').then(m => m.NotfoundModule) },
-  { path: 'allsolds', loadChildren: () => import('./allsolds/allsolds.module').then(m => m.AllsoldsModule) },
-  { path: 'cadastrar', loadChildren: () => import('./cadastrar/cadastrar.module').then(m => m.CadastrarModule) },
-  { path: '**', loadChildren: () => import('./notfound/notfound.module').then(m => m.NotfoundModule) },
+  { path: 'allsolds', loadChildren: () => import('./allsolds/allsolds.module').then(m => m.AllsoldsModule), canActivate:[AuthGuardAdmin]},
+  { path: 'cadastrar', loadChildren: () => import('./cadastrar/cadastrar.module').then(m => m.CadastrarModule), canActivate:[AuthGuardAdmin] },
+  { path: 'unauthorized', loadChildren: () => import('./unauthorized/unauthorized.module').then(m => m.UnauthorizedModule) },
+  { path: '**', loadChildren: () => import('./notfound/notfound.module').then(m => m.NotfoundModule)},
 ];
 
 @NgModule({
