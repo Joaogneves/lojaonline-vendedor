@@ -25,6 +25,7 @@ export class UserService {
       }),
       catchError((error) => {
         console.error('Erro na chamada de login:', error);
+        localStorage.clear()
         return throwError(error);
       })
     );

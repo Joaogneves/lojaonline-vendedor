@@ -1,0 +1,19 @@
+<div class="container" style="width: 83vw; height: 100vh; overflow-y: scroll;">
+    <div class="col-12 justify-content-center d-flex mt-3 flex-wrap">
+        <div class="card m-5" style="width: 18rem;" *ngFor="let u of user$ | async">
+            <div class="card-body">
+                <h5 class="card-title">{{u.firstName}} {{u.lastName}}</h5>
+                <p class="card-text">Escolha uma das opções abaixo.</p>
+                <div class="d-flex justify-content-between">
+                    <button class="btn btn-primary">Alterações</button>
+                    <button class="btn btn-danger">Desativar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--
+
+    
+-->

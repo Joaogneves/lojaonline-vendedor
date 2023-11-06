@@ -58,8 +58,8 @@
     </div>
     <div *ngIf="cpf" class="login-btn" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample"
         aria-expanded="false" aria-controls="collapseWidthExample">
-        <img src="https://img.freepik.com/fotos-gratis/ilustracao-divertida-de-desenho-animado-3d-de-um-empresario-indiano_183364-114492.jpg?w=740&t=st=1699138954~exp=1699139554~hmac=6975bf78cf039247fb02c86c54c9a0d4b201315d78d5ba76305852a365321ebd" alt="" width="32" height="32"
-            class="rounded-circle me-2">
+        <img src="https://img.freepik.com/fotos-gratis/ilustracao-divertida-de-desenho-animado-3d-de-um-empresario-indiano_183364-114492.jpg?w=740&t=st=1699138954~exp=1699139554~hmac=6975bf78cf039247fb02c86c54c9a0d4b201315d78d5ba76305852a365321ebd"
+            alt="" width="32" height="32" class="rounded-circle me-2">
         <strong>{{userName}}</strong>
     </div>
 </div>
@@ -67,7 +67,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">New message</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">LOGIN</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -78,6 +78,10 @@
                 <div class="mb-3">
                     <label for="password" class="col-form-label">Senha</label>
                     <input type="password" class="form-control" id="password" [(ngModel)]="user.password">
+                </div>
+                <div class="mb-3 text-center text-danger" *ngIf="this.errorMessage !== ''">
+                    <small>{{this.errorMessage}}</small><br>
+                    <small>{{this.errorMessageNewPassword}}</small>
                 </div>
             </div>
             <div class="modal-footer">
