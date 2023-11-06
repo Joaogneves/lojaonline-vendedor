@@ -28,7 +28,6 @@ export class PageHeaderComponent implements OnInit {
     this.user.cpf = this.user.cpf.replace(/[.-]/g, '');
     this.service.login(this.user).subscribe(
       res => {
-        console.log(res)
         window.location.href = '/';
       }
       );

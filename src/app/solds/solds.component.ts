@@ -23,7 +23,6 @@ export class SoldsComponent implements OnInit {
         car.forEach(
           (c) => {
             this.total += parseFloat(c.price!)
-            console.log(this.total);
           }
         )
       }

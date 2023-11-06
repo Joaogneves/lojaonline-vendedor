@@ -22,7 +22,6 @@ export class AllsoldsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllUsers();
-    console.log(this.cars$)
   }
 
   getAllUsers(){
@@ -42,7 +41,6 @@ export class AllsoldsComponent implements OnInit {
         car.forEach(
           (c) => {
             this.total += parseFloat(c.price!)
-            console.log(this.total);
           }
         )
       }

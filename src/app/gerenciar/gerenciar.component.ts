@@ -22,11 +22,10 @@ export class GerenciarComponent implements OnInit {
   ngOnInit(): void {
     this.getAll();
     this.cars$.subscribe(cars => {
-      console.log('Cars:', cars);
+      
     }); 
     this.getUser();
     this.userId = localStorage.getItem("userId")!;
-    console.log(this.userId)
   }
 
   getAll() {
@@ -50,7 +49,6 @@ export class GerenciarComponent implements OnInit {
     this.userService.findUser(cpf).subscribe(
       res => {
         this.userId = res.id!;
-        console.log("User",this.userId)
         localStorage.setItem("userId", this.userId);
       }
     );
