@@ -5,7 +5,9 @@
                 <h5 class="card-title">{{u.firstName}} {{u.lastName}}</h5>
                 <p class="card-text">Escolha uma das opções abaixo.</p>
                 <div class="d-flex justify-content-between">
-                    <button class="btn btn-primary">Alterações</button>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#passwordModal" (click)="getId(u.id!)">
+                        Alterar Senha
+                    </button>
                     <button class="btn btn-danger">Desativar</button>
                 </div>
             </div>
@@ -13,7 +15,29 @@
     </div>
 </div>
 
-<!--
-
-    
--->
+<div class="modal fade" id="passwordModal" tabindex="-1" aria-labelledby="passwordModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Nova senha</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <label for="password1" class="form-label">Nova senha</label>
+                <input type="password" id="password1" class="form-control" aria-describedby="passwordHelpBlock" [(ngModel)]="password1">
+                <div id="passwordHelpBlock" class="form-text">
+                    Coloque uma senha de 8 a 20 caracteres que contenha letras e números.
+                </div>
+                <label for="password2" class="form-label">Repita a nova senha</label>
+                <input type="password" id="password2" class="form-control" aria-describedby="passwordHelpBlock" [(ngModel)]="password2">
+                <div *ngIf="notEquals" class="form-text text-danger text-center">
+                    As senhas precisam ser iguais
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" (click)="setPassword()">Alterar senha</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -25,3 +25,8 @@ export interface UserName {
     lastName?: string,
     role?: string
 }
+
+export interface UserPassword {
+    id?: string,
+    password: string
+}

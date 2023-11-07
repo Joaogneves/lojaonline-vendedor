@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
-import { User, UserLogin, UserName, UserSalles } from './model/User';
+import { User, UserLogin, UserName, UserPassword, UserSalles } from './model/User';
 import { catchError, map, throwError } from 'rxjs';
 
 @Injectable({
@@ -54,5 +54,14 @@ export class UserService {
 
   isTokenExpired(token: string) {
     return false;
+  }
+
+  setNewPassword(id:string, password: UserPassword) {
+    const token = localStorage.getItem("token")
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.put<UserPassword>(`${this.urlApi}/users/newpassword/${id}`, password, {headers});
   }
 }

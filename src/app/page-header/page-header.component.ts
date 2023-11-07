@@ -1,4 +1,4 @@
-import { User, UserLogin, UserName } from './../model/User';
+import { User, UserLogin, UserName, UserPassword } from './../model/User';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { Observable } from 'rxjs';
@@ -20,6 +20,10 @@ export class PageHeaderComponent implements OnInit {
     cpf: '',
     password: ''
   };
+
+  password1: string = '';
+  password2: string = '';
+  notEquals: boolean = false;
 
   constructor(private service: UserService) { }
   ngOnInit(): void {
@@ -54,5 +58,21 @@ export class PageHeaderComponent implements OnInit {
   logout() {
     localStorage.clear();
     window.location.href = '/'
+  }
+
+  setPassword() {
+    if(this.password1 === this.password2) {
+      const userPassword: UserPassword = {
+        password: this.password1
+      }
+      const id = localStorage.getItem('userId')!;
+      this.service.setNewPassword(id, userPassword).subscribe(_ => {
+        window.location.href = '/allusers';
+      })
+      this.notEquals = false;
+    }
+    else {
+      this.notEquals = true;
+    }
   }
 }
