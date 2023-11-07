@@ -2,13 +2,15 @@
     <div class="col-12 justify-content-center d-flex mt-3 flex-wrap">
         <div class="card m-5" style="width: 18rem;" *ngFor="let u of user$ | async">
             <div class="card-body">
-                <h5 class="card-title">{{u.firstName}} {{u.lastName}}</h5>
+                <h5 *ngIf="u.isInative" class="card-title text-bg-secondary p-3 rounded">{{u.firstName}} {{u.lastName}}</h5>
+                <h5 *ngIf="!u.isInative" class="card-title p-3">{{u.firstName}} {{u.lastName}}</h5>
                 <p class="card-text">Escolha uma das opções abaixo.</p>
                 <div class="d-flex justify-content-between">
                     <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#passwordModal" (click)="getId(u.id!)">
                         Alterar Senha
                     </button>
-                    <button class="btn btn-danger">Desativar</button>
+                    <button *ngIf="u.isInative" class="btn btn-danger" (click)="isActiveSet(u.id!)">Ativar</button>
+                    <button *ngIf="!u.isInative" class="btn btn-danger" (click)="isActiveSet(u.id!)">Desativar</button>
                 </div>
             </div>
         </div>

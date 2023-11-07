@@ -64,4 +64,13 @@ export class UserService {
     });
     return this.http.put<UserPassword>(`${this.urlApi}/users/newpassword/${id}`, password, {headers});
   }
+
+  isActiveSet(id: string) {
+    const token = localStorage.getItem("token")
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.put<UserPassword>(`${this.urlApi}/users/setstatus/${id}`, null, {headers});
+  }
 }

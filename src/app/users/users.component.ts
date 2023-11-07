@@ -50,4 +50,10 @@ export class UsersComponent implements OnInit {
       this.notEquals = true;
     }
   }
+
+  isActiveSet(id: string) {
+    this.userService.isActiveSet(id).subscribe(_ => {
+      window.location.href = '/allusers';
+    });
+  }
 }

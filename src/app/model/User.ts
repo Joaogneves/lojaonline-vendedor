@@ -12,6 +12,7 @@ export interface UserSalles {
     firstName?: string,
     lastName?: string,
     cpf: string,
+    isInative: boolean
 }
 
 export interface UserLogin {
