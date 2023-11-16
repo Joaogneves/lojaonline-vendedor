@@ -16,6 +16,8 @@ const routes: Routes = [
   { path: 'cadastrar', loadChildren: () => import('./cadastrar/cadastrar.module').then(m => m.CadastrarModule), canActivate:[AuthGuardAdmin] },
   { path: 'unauthorized', loadChildren: () => import('./unauthorized/unauthorized.module').then(m => m.UnauthorizedModule) },
   { path: 'allusers', loadChildren: () => import('./users/users.module').then(m => m.UsersModule) },
+  { path: 'clientes', loadChildren: () => import('./clientes/clientes.module').then(m => m.ClientesModule) },
+  { path: 'cliente/:id', loadChildren: () => import('./cliente/cliente.module').then(m => m.ClienteModule) },
   { path: '**', loadChildren: () => import('./notfound/notfound.module').then(m => m.NotfoundModule)},
 ];
 

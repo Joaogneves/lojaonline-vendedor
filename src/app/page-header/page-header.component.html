@@ -24,6 +24,13 @@
                 <span>Vendidos</span>
             </a>
         </li>
+        <li *ngIf="cpf">
+            <a routerLink="/clientes" class="nav-link link-body-emphasis">
+                <i class="fa-solid fa-user-group me-4" style="font-size: 1rem;"></i>
+                <span>Clientes</span>
+                <span class=" ms-1 badge rounded-pill text-bg-danger">{{contador}}</span>
+            </a>
+        </li>
         <li *ngIf="role == 'ADMIN'">
             <a routerLink="/allsolds" class="nav-link link-body-emphasis">
                 <i class="fa-solid fa-money-bill-trend-up me-4"></i>
@@ -47,7 +54,8 @@
     <div style="max-height: 100px;">
         <div class="collapse collapse-horizontal mb-4" id="collapseWidthExample">
             <div class="d-grid gap-2">
-                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#passwordModalh">Alterar Senha</button>
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#passwordModalh">Alterar
+                    Senha</button>
                 <button class="btn btn-danger" (click)="logout()">Sair</button>
             </div>
         </div>
@@ -102,12 +110,14 @@
             </div>
             <div class="modal-body">
                 <label for="password1" class="form-label">Nova senha</label>
-                <input type="password" id="password1" class="form-control" aria-describedby="passwordHelpBlock" [(ngModel)]="password1">
+                <input type="password" id="password1" class="form-control" aria-describedby="passwordHelpBlock"
+                    [(ngModel)]="password1">
                 <div id="passwordHelpBlock" class="form-text">
                     Coloque uma senha de 8 a 20 caracteres que contenha letras e números.
                 </div>
                 <label for="password2" class="form-label">Repita a nova senha</label>
-                <input type="password" id="password2" class="form-control" aria-describedby="passwordHelpBlock" [(ngModel)]="password2">
+                <input type="password" id="password2" class="form-control" aria-describedby="passwordHelpBlock"
+                    [(ngModel)]="password2">
                 <div *ngIf="notEquals" class="form-text text-danger text-center">
                     As senhas precisam ser iguais
                 </div>

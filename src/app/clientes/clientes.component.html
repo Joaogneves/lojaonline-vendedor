@@ -1,0 +1,32 @@
+<div class="container d-flex justify-content-center align-items-center" style="width: 83vw; height: 100vh;">
+    <div class="card text-center mb-3" style="width: 18rem;" *ngFor="let c of cliente$ | async">
+        <div class="card-body">
+            <h5 class="card-title">{{c.cliente.fullName}}</h5>
+            <div class="col-12 d-flex">
+                <div class="col-6 border">
+                    <h6>CNH</h6>
+                    <span>{{c.cliente.cnh}}</span>
+                </div>
+                <div class="col-6 border">
+                    <h6>CPF</h6>
+                    <span>{{c.cliente.cpf}}</span>
+                </div>
+            </div>
+            <div class="col-12 d-flex">
+                <div class="col-6 border">
+                    <h6>RG</h6>
+                    <span>{{c.cliente.rg}}</span>
+                </div>
+                <div class="col-6 border">
+                    <h6>Whatsapp</h6>
+                    <span>{{c.cliente.whatsapp}}</span>
+                </div>
+            </div>
+            <div class="col-12 d-flex">
+                <div class="col-12 border">
+                    <a routerLink="/cliente/{{c.id}}" class="m-3 btn btn-info">Abrir ficha completa</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,69 @@
+<div class="container d-flex justify-content-center align-items-center" style="width: 83vw; height: 100vh;">
+    <div class="d-flex col-8" *ngIf="cliente$ | async as c">
+        <div class="accordion col-12" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <h4>Dados pessoais</h4>
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <div class="col-12 d-flex">
+                            <div class="col-6">
+                                <ul class="list-group">
+                                    <li class="list-group-item d-flex justify-content-between"><span class="fw-bold">Nome: </span><span>{{c.cliente.fullName}}</span></li>
+                                    <li class="list-group-item d-flex justify-content-between"><span class="fw-bold">RG: </span><span>{{c.cliente.rg}}</span></li>
+                                    <li class="list-group-item d-flex justify-content-between"><span class="fw-bold">Nome da Mãe: </span><span>{{c.cliente.motherName}}</span></li>
+                                    <li class="list-group-item d-flex justify-content-between"><span class="fw-bold">Data de Nascimento: </span><span>{{c.cliente.birthdate | date:'dd/MM/yyyy'}}</span></li>
+                                    <li class="list-group-item d-flex justify-content-between"><span class="fw-bold">Naturalidade: </span><span>{{c.cliente.citizenship}}</span></li>
+                                    <li class="list-group-item d-flex justify-content-between"><span class="fw-bold">Estado civil: </span><span>{{c.cliente.maritalStatus}}</span></li>
+                                </ul>
+                            </div>
+                            <div class="col-6">
+                                <ul class="list-group">
+                                    <li class="list-group-item d-flex justify-content-between"><span class="fw-bold">CPF: </span><span>{{c.cliente.cpf}}</span></li>
+                                    <li class="list-group-item d-flex justify-content-between"><span class="fw-bold">CNH: </span><span>{{c.cliente.cnh}}</span></li>
+                                    <li class="list-group-item d-flex justify-content-between"><span class="fw-bold">Nome do pai: </span><span>{{c.cliente.fatherName}}</span></li>
+                                    <li class="list-group-item d-flex justify-content-between"><span class="fw-bold">Whatsapp: </span><span>{{c.cliente.whatsapp}}</span></li>
+                                    <li class="list-group-item d-flex justify-content-between"><span class="fw-bold">Email: </span><span>{{c.cliente.email}}</span></li>
+                                    <li class="list-group-item d-flex justify-content-between"><span class="fw-bold">Sexo: </span><span>{{c.cliente.gender}}</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <h4>Endereço</h4>
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <div class="col-12 d-flex">
+                                <div class="col-6">
+                                    <ul class="list-group">
+                                        <li class="list-group-item d-flex justify-content-between"><span class="fw-bold">Rua: </span><span>{{c.address.streetName}}</span></li>
+                                        <li class="list-group-item d-flex justify-content-between"><span class="fw-bold">Bairro: </span><span>{{c.address.neighborhood}}</span></li>
+                                        <li class="list-group-item d-flex justify-content-between"><span class="fw-bold">UF: </span><span>{{c.address.uf}}</span></li>
+                                        <li class="list-group-item d-flex justify-content-between pt-2 pb-3"><span class="fw-bold">Complemento: </span><span>{{c.address.complement}}</span></li>
+                                    </ul>
+                                </div>
+                                <div class="col-6">
+                                    <ul class="list-group">
+                                        <li class="list-group-item d-flex justify-content-between"><span class="fw-bold">Número: </span><span>{{c.address.streetNumber}}</span></li>
+                                        <li class="list-group-item d-flex justify-content-between"><span class="fw-bold">Cidade: </span><span>{{c.address.city}}</span></li>
+                                        <li class="list-group-item d-flex justify-content-between"><span class="fw-bold">CEP: </span><span>{{c.address.cep}}</span></li>
+                                        <li class="list-group-item d-flex justify-content-end"><button type="button" class="btn btn-primary btn-sm" (click)="serveCliente(c.id!)">Terminar Atendimento</button></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

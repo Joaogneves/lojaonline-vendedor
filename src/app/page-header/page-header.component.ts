@@ -2,6 +2,8 @@ import { User, UserLogin, UserName, UserPassword } from './../model/User';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { Observable } from 'rxjs';
+import { ClienteService } from '../cliente.service';
+import { DataCliente } from '../model/Cliente';
 
 @Component({
   selector: 'app-page-header',
@@ -24,11 +26,26 @@ export class PageHeaderComponent implements OnInit {
   password1: string = '';
   password2: string = '';
   notEquals: boolean = false;
-
-  constructor(private service: UserService) { }
+  cont: number = 0;
+  contador: string = '';
+  cliente$ = new Observable<DataCliente[]>()
+  
+  constructor(private service: UserService, private clienteService: ClienteService) { }
   ngOnInit(): void {
     this.getUser();
-    console.log(this.role)
+    this.getClientes();
+    this.cliente$.subscribe(
+      res => {
+        res.forEach(c => {
+          !c.cliente.isServed
+          this.cont++;
+          console.log(this.cont)
+        })
+        localStorage.setItem('clientes', this.cont.toString());
+      }
+    )
+
+    this.contador = localStorage.getItem('clientes')!;
   }
 
   login() {
@@ -61,7 +78,7 @@ export class PageHeaderComponent implements OnInit {
   }
 
   setPassword() {
-    if(this.password1 === this.password2) {
+    if (this.password1 === this.password2) {
       const userPassword: UserPassword = {
         password: this.password1
       }
@@ -74,5 +91,9 @@ export class PageHeaderComponent implements OnInit {
     else {
       this.notEquals = true;
     }
+  }
+
+  getClientes() {
+    this.cliente$ = this.clienteService.getAllNotServed();
   }
 }
