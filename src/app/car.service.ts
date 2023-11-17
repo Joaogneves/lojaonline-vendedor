@@ -43,13 +43,13 @@ export class CarService {
     return this.http.get<Car>(this.urlApi + '/cars/' + id, {headers});
   }
 
-  soldCar(id: string, userId: string) {
+  soldCar(id: string, userId: string, cliendId: string) {
     const token = localStorage.getItem("token")
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
     });
-    return this.http.put<Car>(this.urlApi + '/cars/sell?carId=' + id + '&userId=' + userId , null, {headers});
+    return this.http.put<Car>(this.urlApi + '/cars/sell?carId=' + id + '&userId=' + userId + '&clienteId=' + cliendId, null, {headers});
   }
 
   editCar(id: string, car:Car) {

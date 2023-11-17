@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { CarService } from '../car.service';
 import { Car } from '../model/Car';
 import { Observable } from 'rxjs';
+import { DataCliente } from '../model/Cliente';
+import { ClienteService } from '../cliente.service';
 declare var $: any;
 
 
@@ -13,9 +15,12 @@ declare var $: any;
 })
 export class GerenciarComponent implements OnInit {
 
-  userId: string = ''
+  userId: string = '';
   cars$ = new Observable<Car[]>();
-  constructor(private service: CarService, private userService: UserService ) {
+  carId: string = '';
+  cliente$ = new Observable<DataCliente[]>();
+  clienteSelected: string = '--Selecione o cliente--';
+  constructor(private service: CarService, private userService: UserService, private clienteService: ClienteService ) {
     
   }
 
@@ -26,14 +31,18 @@ export class GerenciarComponent implements OnInit {
     }); 
     this.getUser();
     this.userId = localStorage.getItem("userId")!;
+    this.getClientes();
   }
 
   getAll() {
     this.cars$ = this.service.getCars();
   }
 
-  soldCar(id: string) {
-    this.service.soldCar(id, this.userId).subscribe(_ => {
+  soldCar() {
+    console.log('carId', this.carId)
+    console.log('UserId', this.userId)
+    console.log('ClienteId', this.clienteSelected);
+    this.service.soldCar(this.carId, this.userId, this.clienteSelected).subscribe(_ => {
       window.location.href = '/solds';
     })
   }
@@ -52,5 +61,13 @@ export class GerenciarComponent implements OnInit {
         localStorage.setItem("userId", this.userId);
       }
     );
+  }
+
+  getClientes() {
+    this.cliente$ = this.clienteService.getAll();
+  }
+
+  getId(id: string) {
+    this.carId = id;
   }
 }

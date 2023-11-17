@@ -8,13 +8,17 @@
             <h4>{{c.carBrand}}</h4>
         </div>
         <div class="col-12 d-flex">
-            <div class="card-body col-2">
+            <div class="card-body col-3">
                 <img *ngIf="c.picture" [src]="c.picture" alt="" width="220px" class="rounded">
             </div>
-            <div class="card-body col-9">
+            <div class="card-body col-6">
                 <h5 class="card-title">{{c.name}} {{c.carYear}}</h5>
                 <p class="card-text">Cor: {{c.carColor}}</p>
                 <p class="card-text">{{c.price | currency: 'BRL'}}</p>
+            </div>
+            <div class="card-body col-3">
+                <h4>Cliente</h4>
+                <p>{{c.clienteName}}</p>
             </div>
         </div>
     </div>

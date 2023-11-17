@@ -39,6 +39,7 @@ export interface Car {
   km?: string;
   pictures?: CarPicture[];
   optionals?: CarOptionals[];
+  clienteName?: string;
 }
 
 export interface CarPicture {
