@@ -47,4 +47,22 @@ export class ClienteService {
     return this.http.put<any>(`${this.urlApi}/clientes/${id}`, {headers})
   }
 
+
+  download(id: string) {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+      'Accept': 'application/pdf'
+    });
+
+    this.http.get(`${this.urlApi}/clientes/pdf/${id}`, { headers, responseType: 'blob' as 'json' })
+      .subscribe((response: any) => {
+        const blob = new Blob([response], { type: 'application/pdf' });
+        const url = window.URL.createObjectURL(blob);
+        window.open(url);
+        window.URL.revokeObjectURL(url);
+      });
+  }
+
 }

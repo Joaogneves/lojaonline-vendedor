@@ -41,4 +41,8 @@ export class ClienteComponent implements OnInit {
     )
   }
 
+  download(id: string) {
+    this.service.download(id);
+  }
+
 }

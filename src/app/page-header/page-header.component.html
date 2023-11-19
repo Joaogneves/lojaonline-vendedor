@@ -82,11 +82,11 @@
             <div class="modal-body">
                 <div class="mb-3">
                     <label for="cpf" class="col-form-label">CPF</label>
-                    <input mask="000.000.000-00" type="text" class="form-control" id="cpf" [(ngModel)]="user.cpf">
+                    <input mask="000.000.000-00" type="text" class="form-control" id="cpf" [(ngModel)]="user.cpf" (keyup.enter)="selectPassword()">
                 </div>
                 <div class="mb-3">
                     <label for="password" class="col-form-label">Senha</label>
-                    <input type="password" class="form-control" id="password" [(ngModel)]="user.password">
+                    <input type="password" class="form-control" id="password" [(ngModel)]="user.password" (keyup.enter)="enterLogin()" #passwordInput>
                 </div>
                 <div class="mb-3 text-center text-danger" *ngIf="this.errorMessage !== ''">
                     <small>{{this.errorMessage}}</small><br>

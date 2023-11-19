@@ -1,7 +1,8 @@
-<div class="container d-flex justify-content-center align-items-center" style="width: 83vw; height: 100vh;">
-    <div class="card text-center mb-3" style="width: 18rem;" *ngFor="let c of cliente$ | async">
+<div class="container d-flex justify-content-center align-items-center flex-wrap" style="width: 83vw; height: 100vh;">
+    <div class="card text-center m-3" style="width: 18rem;" *ngFor="let c of cliente$ | async">
         <div class="card-body">
-            <h5 class="card-title">{{c.cliente.fullName}}</h5>
+            <h5 class="card-title text-success" *ngIf="c.cliente.isServed">{{c.cliente.fullName}}</h5>
+            <h5 class="card-title text-warning" *ngIf="!c.cliente.isServed">{{c.cliente.fullName}}</h5>
             <div class="col-12 d-flex">
                 <div class="col-6 border">
                     <h6>CNH</h6>
@@ -9,17 +10,17 @@
                 </div>
                 <div class="col-6 border">
                     <h6>CPF</h6>
-                    <span>{{c.cliente.cpf}}</span>
+                    <span>{{c.cliente.cpf | mask: '000.000.000-00'}}</span>
                 </div>
             </div>
             <div class="col-12 d-flex">
                 <div class="col-6 border">
                     <h6>RG</h6>
-                    <span>{{c.cliente.rg}}</span>
+                    <span>{{c.cliente.rg | mask: '00.000.000-0'}}</span>
                 </div>
                 <div class="col-6 border">
                     <h6>Whatsapp</h6>
-                    <span>{{c.cliente.whatsapp}}</span>
+                    <span>{{c.cliente.whatsapp| mask: '(00) 00000-0000'}}</span>
                 </div>
             </div>
             <div class="col-12 d-flex">

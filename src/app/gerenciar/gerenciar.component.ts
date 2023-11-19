@@ -19,6 +19,7 @@ export class GerenciarComponent implements OnInit {
   cars$ = new Observable<Car[]>();
   carId: string = '';
   cliente$ = new Observable<DataCliente[]>();
+  clienteId$ = new Observable<DataCliente>();
   clienteSelected: string = '--Selecione o cliente--';
   constructor(private service: CarService, private userService: UserService, private clienteService: ClienteService ) {
     
@@ -69,5 +70,15 @@ export class GerenciarComponent implements OnInit {
 
   getId(id: string) {
     this.carId = id;
+  }
+
+  escolher(id:string) {
+    this.clienteId$ = this.clienteService.getById(id)
+    if(this.clienteId$.subscribe(res => res.cliente.isServed == true)) {
+      console.log("Não pode")
+    } 
+    else {
+      console.log("Pode")
+    }
   }
 }

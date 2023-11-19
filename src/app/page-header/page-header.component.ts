@@ -1,5 +1,5 @@
 import { User, UserLogin, UserName, UserPassword } from './../model/User';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { UserService } from '../user.service';
 import { Observable } from 'rxjs';
 import { ClienteService } from '../cliente.service';
@@ -29,6 +29,7 @@ export class PageHeaderComponent implements OnInit {
   cont: number = 0;
   contador: string = '';
   cliente$ = new Observable<DataCliente[]>()
+  @ViewChild('passwordInput') inputElement!: ElementRef;
   
   constructor(private service: UserService, private clienteService: ClienteService) { }
   ngOnInit(): void {
@@ -48,6 +49,10 @@ export class PageHeaderComponent implements OnInit {
     this.contador = localStorage.getItem('clientes')!;
   }
 
+  enterLogin() {
+    this.login();
+  }
+
   login() {
     this.user.cpf = this.user.cpf.replace(/[.-]/g, '');
     this.service.login(this.user).subscribe(
@@ -60,6 +65,10 @@ export class PageHeaderComponent implements OnInit {
         this.errorMessageNewPassword = 'Se esqueceu sua senha entre em contato com o seu gerente';
       }
     );
+  }
+
+  selectPassword() {
+    this.inputElement.nativeElement.focus();
   }
   getUser() {
     this.cpf = localStorage.getItem("cpf")!;

@@ -1,46 +1,50 @@
 <div class="container" style="width: 83vw; height: 100vh; overflow-y: scroll;">
-    <div class="card mt-5" *ngFor="let c of cars$ | async">
-        <div class="card-header">
-            <h4>{{c.carBrand}}</h4>
-        </div>
-        <div class="col-12 d-flex">
-            <div class="card-body col-2">
-                <img *ngIf="c.picture" [src]="c.picture" alt="" width="220px" class="rounded">
-            </div>
-            <div class="card-body col-9">
-                <h5 class="card-title">{{c.name}} {{c.carYear}}</h5>
-                <p class="card-text">Cor: {{c.carColor}}</p>
-                <p class="card-text">{{c.price | currency: 'BRL'}}</p>
-                <p class="card-text border-top">O que deseja fazer ?</p>
-                <a href="/edit/{{c.id}}" class="btn btn-primary me-5"><i class="fa-solid fa-pen-to-square"></i>
-                    Editar</a>
-                <a (click)="getId(c.id!)" class="btn btn-success me-5" data-bs-toggle="modal" data-bs-target="#ModalVenda"><i class="fa-solid fa-money-bill"></i>
-                    Vender</a>
-                <a href="/imgadd/{{c.id}}" class="btn btn-primary me-5"><i class="fa-solid fa-image"></i>
-                    Adicionar imagem</a>
-                <a (click)="deleteCar(c.id!)" class="btn btn-danger me-5"><i class="fa-solid fa-trash"></i> Excluir</a>
-            </div>
-        </div>
+  <div class="card mt-5" *ngFor="let c of cars$ | async">
+    <div class="card-header">
+      <h4>{{c.carBrand}}</h4>
     </div>
-</div>
-
-<div class="modal fade" id="ModalVenda" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <select class="form-select" [(ngModel)]="clienteSelected">
-            <option disabled selected>--Selecione o cliente--</option>
-            <option *ngFor="let c of cliente$ | async" value="{{c.cliente.id}}">{{c.cliente.fullName}} - {{c.cliente.cpf}}</option>
-          </select>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" (click)="soldCar()">Save changes</button>
-        </div>
+    <div class="col-12 d-flex">
+      <div class="card-body col-2">
+        <img *ngIf="c.picture" [src]="c.picture" alt="" width="220px" class="rounded">
+      </div>
+      <div class="card-body col-9">
+        <h5 class="card-title">{{c.name}} {{c.carYear}}</h5>
+        <p class="card-text">Cor: {{c.carColor}}</p>
+        <p class="card-text">{{c.price | currency: 'BRL'}}</p>
+        <p class="card-text border-top">O que deseja fazer ?</p>
+        <a href="/edit/{{c.id}}" class="btn btn-primary me-5"><i class="fa-solid fa-pen-to-square"></i>
+          Editar</a>
+        <a (click)="getId(c.id!)" class="btn btn-success me-5" data-bs-toggle="modal" data-bs-target="#ModalVenda"><i
+            class="fa-solid fa-money-bill"></i>
+          Vender</a>
+        <a href="/imgadd/{{c.id}}" class="btn btn-primary me-5"><i class="fa-solid fa-image"></i>
+          Adicionar imagem</a>
+        <a (click)="deleteCar(c.id!)" class="btn btn-danger me-5"><i class="fa-solid fa-trash"></i> Excluir</a>
       </div>
     </div>
   </div>
+</div>
+
+<div class="modal fade" id="ModalVenda" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Escolha para quem o carro vai ser vendido</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <select class="form-select" [(ngModel)]="clienteSelected" (change)="escolher(clienteSelected)">
+          <option disabled selected>--Selecione o cliente--</option>
+          <option *ngFor="let c of cliente$ | async" value="{{c.cliente.id}}"
+            [ngClass]="c.cliente.isServed == true ? 'text-danger': 'text-success'">
+            {{c.cliente.fullName}} - {{c.cliente.cpf}}
+          </option>
+        </select>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
+        <button type="button" class="btn btn-primary" (click)="soldCar()">Vender</button>
+      </div>
+    </div>
+  </div>
+</div>

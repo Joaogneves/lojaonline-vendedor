@@ -14,7 +14,7 @@
                             <div class="col-6">
                                 <ul class="list-group">
                                     <li class="list-group-item d-flex justify-content-between"><span class="fw-bold">Nome: </span><span>{{c.cliente.fullName}}</span></li>
-                                    <li class="list-group-item d-flex justify-content-between"><span class="fw-bold">RG: </span><span>{{c.cliente.rg}}</span></li>
+                                    <li class="list-group-item d-flex justify-content-between"><span class="fw-bold">RG: </span><span>{{c.cliente.rg| mask: '00.000.000-0'}}</span></li>
                                     <li class="list-group-item d-flex justify-content-between"><span class="fw-bold">Nome da Mãe: </span><span>{{c.cliente.motherName}}</span></li>
                                     <li class="list-group-item d-flex justify-content-between"><span class="fw-bold">Data de Nascimento: </span><span>{{c.cliente.birthdate | date:'dd/MM/yyyy'}}</span></li>
                                     <li class="list-group-item d-flex justify-content-between"><span class="fw-bold">Naturalidade: </span><span>{{c.cliente.citizenship}}</span></li>
@@ -23,10 +23,10 @@
                             </div>
                             <div class="col-6">
                                 <ul class="list-group">
-                                    <li class="list-group-item d-flex justify-content-between"><span class="fw-bold">CPF: </span><span>{{c.cliente.cpf}}</span></li>
+                                    <li class="list-group-item d-flex justify-content-between"><span class="fw-bold">CPF: </span><span>{{c.cliente.cpf| mask: '000.000.000-00'}}</span></li>
                                     <li class="list-group-item d-flex justify-content-between"><span class="fw-bold">CNH: </span><span>{{c.cliente.cnh}}</span></li>
                                     <li class="list-group-item d-flex justify-content-between"><span class="fw-bold">Nome do pai: </span><span>{{c.cliente.fatherName}}</span></li>
-                                    <li class="list-group-item d-flex justify-content-between"><span class="fw-bold">Whatsapp: </span><span>{{c.cliente.whatsapp}}</span></li>
+                                    <li class="list-group-item d-flex justify-content-between"><span class="fw-bold">Whatsapp: </span><span>{{c.cliente.whatsapp| mask: '(00) 00000-0000'}}</span></li>
                                     <li class="list-group-item d-flex justify-content-between"><span class="fw-bold">Email: </span><span>{{c.cliente.email}}</span></li>
                                     <li class="list-group-item d-flex justify-content-between"><span class="fw-bold">Sexo: </span><span>{{c.cliente.gender}}</span></li>
                                 </ul>
@@ -56,8 +56,12 @@
                                     <ul class="list-group">
                                         <li class="list-group-item d-flex justify-content-between"><span class="fw-bold">Número: </span><span>{{c.address.streetNumber}}</span></li>
                                         <li class="list-group-item d-flex justify-content-between"><span class="fw-bold">Cidade: </span><span>{{c.address.city}}</span></li>
-                                        <li class="list-group-item d-flex justify-content-between"><span class="fw-bold">CEP: </span><span>{{c.address.cep}}</span></li>
-                                        <li class="list-group-item d-flex justify-content-end"><button type="button" class="btn btn-primary btn-sm" (click)="serveCliente(c.id!)">Terminar Atendimento</button></li>
+                                        <li class="list-group-item d-flex justify-content-between"><span class="fw-bold">CEP: </span><span>{{c.address.cep| mask: '00000-000'}}</span></li>
+                                        <li class="list-group-item d-flex justify-content-between">
+                                            <button type="button" class="btn btn-primary btn-sm" (click)="serveCliente(c.id!)" *ngIf="!c.cliente.isServed">Terminar Atendimento</button>
+                                            <span class="me-5 text-danger" *ngIf="c.cliente.isServed">Cliente já atendido</span>
+                                            <button type="button" class="btn btn-primary btn-sm" (click)="download(c.id!)"><i class="fa-solid fa-download"></i></button>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
