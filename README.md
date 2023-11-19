@@ -1,27 +1,48 @@
-# LojaCarroVendedor
+# Loja online Front End - Vendedor
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.5.
+Front End do projeto [BackEnd](https://github.com/Joaogneves/lojaonlinebackend/blob/main/README.md)
 
-## Development server
+## Licença
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Este projeto é licenciado sob a Licença MIT. Consulte o texto completo da [licença]().
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Sobre
 
-## Build
+Esse é o front end do projeto [Loja de carro](https://github.com/Joaogneves/lojaonlinebackend/blob/main/README.md).</br>
+Nesse projeto é possivel o gerenciamento de veiculos, usuários, e clientes.</br>
+Implementado Login de usuários com permissões de Gerente e vendedores.</br>
+Projeto desenvolvido em Angular com framework bootstrap.</br>
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Tecnologias Utilizadas
 
-## Running unit tests
+- Angular
+- TypeScript
+- Bootstrap
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Requisitos
 
-## Running end-to-end tests
+- Node JS
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Configuração do Projeto
 
-## Further help
+1. Clone o repositório:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```bash
+git clone git@github.com:Joaogneves/lojaonline-vendedor.git
+ ```
+
+2. Entre na pasta e execute o node
+
+```bash
+npm start
+```
+
+## Contato
+
+Caso de dúvidas ou sugestões fique a vontade para entrar em contato.
+- Email: joaogabriel443@gmail.com
+- Linkedin: https://www.linkedin.com/in/joaognevess
+
+## Contribuindo
+Sinta-se à vontade para contribuir com novos recursos, correções de bugs ou melhorias. Abra uma issue para discussões ou envie um pull request.

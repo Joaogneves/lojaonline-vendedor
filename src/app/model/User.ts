@@ -3,8 +3,10 @@ export interface User {
     firstName?: string,
     lastName?: string,
     cpf: string,
-    password?: string
-    role: string
+    password?: string,
+    role: string,
+    isDeleted: boolean,
+    isInative: boolean
 }
 
 export interface UserSalles {

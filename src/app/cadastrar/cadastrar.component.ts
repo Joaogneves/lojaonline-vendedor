@@ -14,7 +14,9 @@ export class CadastrarComponent implements OnInit {
     lastName: '',
     cpf: '',
     password: '',
-    role: ''
+    role: '',
+    isDeleted: false,
+    isInative: true
   }
 
   constructor(private service: UserService) { }
