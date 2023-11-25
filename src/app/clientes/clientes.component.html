@@ -1,4 +1,4 @@
-<div class="container d-flex justify-content-center align-items-center flex-wrap" style="width: 83vw; height: 100vh;">
+<div class="container d-flex justify-content-center align-items-center flex-wrap" style="width: 83vw; height: 100vh; overflow-y: scroll;">
     <div class="card text-center m-3" style="width: 18rem;" *ngFor="let c of cliente$ | async">
         <div class="card-body">
             <h5 class="card-title text-success" *ngIf="c.cliente.isServed">{{c.cliente.fullName}}</h5>
