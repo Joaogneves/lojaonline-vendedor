@@ -43,9 +43,7 @@ export class GerenciarComponent implements OnInit {
     console.log('carId', this.carId)
     console.log('UserId', this.userId)
     console.log('ClienteId', this.clienteSelected);
-    this.service.soldCar(this.carId, this.userId, this.clienteSelected).subscribe(_ => {
-      window.location.href = '/solds';
-    })
+    this.service.soldCar(this.carId, this.userId, this.clienteSelected);
   }
 
   deleteCar(id: string) {

@@ -47,9 +47,22 @@ export class CarService {
     const token = localStorage.getItem("token")
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`
+      'Authorization': `Bearer ${token}`,
+      'Accept': 'application/pdf'
     });
-    return this.http.put<Car>(this.urlApi + '/cars/sell?carId=' + id + '&userId=' + userId + '&clienteId=' + cliendId, null, {headers});
+    
+    return this.http.put<Car>
+            (this.urlApi + '/cars/sell?carId=' + id + '&userId=' + userId + '&clienteId=' + cliendId, null,
+             {headers, responseType: 'blob' as 'json' })
+             .subscribe(
+              (response: any) => {
+                const blob = new Blob([response], { type: 'application/pdf' });
+                const url = window.URL.createObjectURL(blob);
+                window.open(url);
+                window.URL.revokeObjectURL(url);
+                location.href = '/'
+              }
+    );
   }
 
   editCar(id: string, car:Car) {
