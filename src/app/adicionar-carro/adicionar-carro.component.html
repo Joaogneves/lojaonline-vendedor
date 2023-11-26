@@ -1,4 +1,4 @@
-<div class="container" style="width: 83vw; height: 100vh;">
+<div class="container" style="width: 83vw; height: 100vh; overflow-y: scroll;">
     <h1 class="text-center pt-5">Adicionar carro</h1>
     <h4 class="text-center">Preencha o formulario com os dados do carro</h4>
 
@@ -11,6 +11,19 @@
             <div class="mb-3">
                 <label class="form-label">Nome</label>
                 <input type="text" class="form-control" placeholder="Gol" [(ngModel)]="name">
+            </div>
+            <div class="mb-3 col-12 d-flex">
+                <div class="me-1 col-6">
+                    <label class="form-label">Renavan</label>
+                    <input mask="00000000000" type="text" class="form-control" placeholder="00000000000" [(ngModel)]="renavan">
+                </div>
+                <div class="ms-1 col-6">
+                    <label class="form-label me-3">Placa</label>
+                    <i (click)="setMercosul()" *ngIf="!mercosul" class="fa-solid fa-toggle-off me-3"></i>
+                    <i (click)="setMercosul()" *ngIf="mercosul" class="fa-solid fa-toggle-on me-3"></i> <small>Mercosul</small>
+                    <input *ngIf="!mercosul" mask="SSS-0000" type="text" class="form-control" placeholder="AAA-1234" [(ngModel)]="placa">
+                    <input *ngIf="mercosul" mask="SSS-0S00" type="text" class="form-control" placeholder="AAA-1A34" [(ngModel)]="placa">
+                </div>
             </div>
             <div class="mb-3">
                 <label class="form-label">Descrição</label>

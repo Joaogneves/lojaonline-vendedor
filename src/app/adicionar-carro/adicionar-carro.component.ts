@@ -39,6 +39,10 @@ export class AdicionarCarroComponent implements OnInit{
   transmissionType = 'ESCOLHA O TIPO DE TRANSMISSÂO';
   carColor = 'ESCOLHA UMA COR';
   km = '';
+  renavan = '';
+  placa = '';
+
+  mercosul: boolean = true;
 
   constructor(private service: CarService, private router: Router) {
     for (let year = 2024; year >= 1970; year--) {
@@ -53,7 +57,8 @@ export class AdicionarCarroComponent implements OnInit{
   saveCar() {
     this.price = this.price.replace(/[.,]/g, '');
     this.km = this.km.replace(/[.]/g, '');
-
+    this.placa = this.placa.replace(/[-]/g, '')
+    this.placa = this.placa.toUpperCase();
     const car: Car = {
       carBrand: this.carBrand,
       name: this.name,
@@ -66,11 +71,18 @@ export class AdicionarCarroComponent implements OnInit{
       transmissionType: this.transmissionType,
       carColor: this.carColor,
       km: this.km,
+      placa: this.placa,
+      renavan: this.renavan,
     }
+    console.log(car);
     this.service.registerCar(car).subscribe(
       response => {
         window.location.href = '/imgadd/' + response.id
       }
         )
+  }
+
+  setMercosul() {
+    this.mercosul = !this.mercosul
   }
 }

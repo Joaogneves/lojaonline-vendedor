@@ -40,6 +40,8 @@ export interface Car {
   pictures?: CarPicture[];
   optionals?: CarOptionals[];
   clienteName?: string;
+  renavan?: string;
+  placa?: string;
 }
 
 export interface CarPicture {
